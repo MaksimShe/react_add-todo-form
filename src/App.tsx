@@ -111,7 +111,11 @@ export const App = () => {
             placeholder="Enter title"
           />
 
-          {titleError && <span className="error">Please enter a title</span>}
+          {titleError && (
+            <label htmlFor="title" className="error">
+              Please enter a title
+            </label>
+          )}
         </div>
 
         <div className="field">
@@ -131,7 +135,11 @@ export const App = () => {
             })}
           </select>
 
-          {userError && <span className="error">Please choose a user</span>}
+          {userError && (
+            <label htmlFor="user" className="error">
+              Please choose a user
+            </label>
+          )}
         </div>
 
         <button type="submit" data-cy="submitButton">
