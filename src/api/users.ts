@@ -1,6 +1,4 @@
-import { User } from '../domain/User';
-
-export const usersFromServer: User[] = [
+export default [
   {
     id: 1,
     name: 'Leanne Graham',

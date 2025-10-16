@@ -1,20 +1,32 @@
-import cn from 'classnames';
-import { TodoAggregate } from '../../domain/TodoAggregate';
 import { UserInfo } from '../UserInfo';
+interface User {
+  id: number;
+  name: string;
+  username: string;
+  email: string;
+}
 
-type TodoInfoProps = {
-  todo: TodoAggregate;
-};
+interface Todo {
+  id: number;
+  title: string;
+  completed: boolean;
+  user: User;
+}
 
-export const TodoInfo = ({ todo }: TodoInfoProps) => {
+interface Props {
+  todo: Todo;
+}
+
+export const TodoInfo: React.FC<Props> = ({ todo }) => {
   return (
     <article
       data-id={todo.id}
-      className={cn('TodoInfo', { 'TodoInfo--completed': todo.completed })}
+      className={todo.completed ? 'TodoInfo TodoInfo--completed' : 'TodoInfo'}
+      key={todo.id}
     >
       <h2 className="TodoInfo__title">{todo.title}</h2>
 
-      {todo.user && <UserInfo user={todo.user || null} />}
+      <UserInfo user={todo.user} />
     </article>
   );
 };

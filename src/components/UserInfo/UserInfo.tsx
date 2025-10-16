@@ -1,13 +1,22 @@
-import { User } from '../../domain/User';
+interface User {
+  id: number;
+  name: string;
+  username: string;
+  email: string;
+}
 
-type UserProps = {
+interface Props {
   user: User;
-};
+}
 
-export const UserInfo = ({ user }: UserProps) => {
+export const UserInfo: React.FC<Props> = ({ user }) => {
+  if (!user) {
+    return null;
+  }
+
   return (
-    <a className="UserInfo" href={`mailto:${user.email}`}>
-      {user.name}
+    <a className="UserInfo" href={`mailto:${user?.email}`}>
+      {user?.name}
     </a>
   );
 };
