@@ -1,4 +1,6 @@
-export default [
+import { Todo } from '../domain/Todo';
+
+export const todosFromServer: Todo[] = [
   {
     id: 1,
     title: 'delectus aut autem',
