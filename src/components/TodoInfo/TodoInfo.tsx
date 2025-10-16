@@ -18,11 +18,14 @@ interface Props {
 }
 
 export const TodoInfo: React.FC<Props> = ({ todo }) => {
+  if (!todo.user) {
+    return null;
+  }
+
   return (
     <article
       data-id={todo.id}
       className={todo.completed ? 'TodoInfo TodoInfo--completed' : 'TodoInfo'}
-      key={todo.id}
     >
       <h2 className="TodoInfo__title">{todo.title}</h2>
 

@@ -17,7 +17,7 @@ const listOfTodo = () => {
 };
 
 export const App = () => {
-  const [historyChange, setHistoryChange] = useState([...listOfTodo()]);
+  const [historyChange, setHistoryChange] = useState(listOfTodo());
   const [inputTitle, setInputTitle] = useState('');
   const [selectUser, setSelectUser] = useState<number | ''>('');
   const [titleError, setTitleError] = useState(false);
@@ -97,13 +97,14 @@ export const App = () => {
       <h1>Add todo form</h1>
 
       <form
-        onSubmit={e => {
-          e.preventDefault();
+        onSubmit={event => {
+          event.preventDefault();
           addTodo();
         }}
       >
         <div className="field">
           <input
+            id="title"
             type="text"
             data-cy="titleInput"
             value={inputTitle}
@@ -120,6 +121,7 @@ export const App = () => {
 
         <div className="field">
           <select
+            id="user"
             data-cy="userSelect"
             value={selectUser}
             onChange={handleSelectUser}

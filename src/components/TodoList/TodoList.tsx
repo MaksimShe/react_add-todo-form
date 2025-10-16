@@ -28,7 +28,7 @@ export const TodoList: React.FC<TodoListProps> = ({ todos }) => {
     <section className="TodoList">
       {todos.map((todo: Todo) => {
         if (!todo.user) {
-          return;
+          return null;
         }
 
         return <TodoInfo key={todo.id} todo={todo} />;
